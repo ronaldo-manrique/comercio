@@ -5,9 +5,6 @@ import { HeaderContainerFacade } from './header.facade';
 @Component({
   selector: 'app-header-container',
   standalone: true,
-  imports: [HeaderBlockComponent],
-  templateUrl: './header-container.component.html',
- 
 })
 export class HeaderContainerComponent {
 
