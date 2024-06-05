@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { FooterBlockComponent } from '../../ui/blocks/footer-block/footer-block.component';
 
 @Component({
   selector: 'app-footer-container',
   standalone: true,
-  imports: [],
-  templateUrl: './footer-container.component.html',
-  styleUrl: './footer-container.component.css'
+  imports: [FooterBlockComponent],
+  templateUrl: './footer-container.component.html'
 })
 export class FooterContainerComponent {
 
