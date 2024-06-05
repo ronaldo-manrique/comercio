@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { HeaderBlockComponent } from '../../ui/blocks/header-block/header-block.component';
 import { HeaderContainerFacade } from './header.facade';
+import { HeaderBlockComponent } from '../../ui/blocks/header-block/header-block.component';
 
 @Component({
   selector: 'app-header-container',
   standalone: true,
+  imports: [HeaderBlockComponent],
+  templateUrl: './header-container.component.html'
 })
 export class HeaderContainerComponent {
 
@@ -12,8 +14,8 @@ export class HeaderContainerComponent {
     private readonly facade:HeaderContainerFacade
   ) { }
 
-  remove(){    
-    this.facade.remove('token');    
+  remove(){
+    this.facade.remove('token');
    }
 
 
