@@ -1,0 +1,19 @@
+<article class="book-card container">
+  <figure class="book-cover ">
+    <img
+      src="https://storage.googleapis.com/catalogo-libros/extralarge/4fe45a5e-da82-0990-e4a0-664623d0a785_imagen.JPG"
+      [alt]="copie.title"
+      class="book-cover"
+    />
+    <div class="overlay">
+      <button class="text">Agregar al carrito</button>
+    </div>
+  </figure>
+
+  <div class="book-info">
+    <h2 class="book-title">{{ copie.title }}</h2>
+    <p>Autor: {{ copie.author }}</p>
+    <p>stock:{{ copie.stock }}</p>
+    <p>genero:{{ copie.gender}}</p>
+  </div>
+</article>

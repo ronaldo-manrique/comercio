@@ -41,4 +41,6 @@ export class StorageService {
 
     return JSON.parse(jsonPayload);
   }
+
+  
 }
