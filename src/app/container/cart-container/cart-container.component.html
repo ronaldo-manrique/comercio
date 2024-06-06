@@ -1,7 +1,12 @@
-<app-cart-block [selectedBooks]="cart$ | async"
-(removeToCopieEvent)="onRemoveFromCart($event)"
-(clearCartEvent)="onClearCart()"
+<app-cart-block
+  [selectedBooks]="cart$ | async"
+  [errorResponse]="errorResponse$ | async"
+  [successResponse]="successResponse$ | async"
+
+  (removeToCopieEvent)="onRemoveFromCart($event)"
+  (clearCartEvent)="onClearCart()"
+  (checkoutCartEvent)="onCheckoutCart($event)"
+
+  
 >
-
-
 </app-cart-block>
