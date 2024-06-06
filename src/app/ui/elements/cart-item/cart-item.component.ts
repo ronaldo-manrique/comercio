@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Ibook } from '../../../core/models/Ibook.models';
+import { ICopieModel } from '../../../core/models/ICopiesModel';
 
 @Component({
   selector: 'app-cart-item',
@@ -9,11 +9,10 @@ import { Ibook } from '../../../core/models/Ibook.models';
   styleUrl: './cart-item.component.css'
 })
 export class CartItemComponent {
-  @Input() book: Ibook;
+  @Input() book: ICopieModel;
   @Output() deleteItem= new EventEmitter<string>()
 
-  removeFromCart(id: string){
-    //acá hacer la logica para eliminar el libro del carrito
+  removeFromCart(id: string){    
     this.deleteItem.emit(id);
   }
 

@@ -10,7 +10,10 @@ export const selectCopies = createSelector(
     (state: CopiesState) => state.copies
 );
 
-
+export const selectCart = createSelector(
+    selectCopiesState,
+    (state: CopiesState) => state.cart
+  );
 
 
   

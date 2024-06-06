@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartItemComponent } from '../../elements/cart-item/cart-item.component';
-import { Ibook } from '../../../core/models/Ibook.models';
+
 import { IloanRequest } from '../../../core/models/loan-request.models';
+import { ICopieModel } from '../../../core/models/ICopiesModel';
 
 @Component({
   selector: 'app-cart-block',
@@ -10,8 +11,11 @@ import { IloanRequest } from '../../../core/models/loan-request.models';
   templateUrl: './cart-block.component.html',
   styleUrl: './cart-block.component.css',
 })
-export class CartBlockComponent {
-  @Input() selectedBooks: Ibook[];
+export class CartBlockComponent implements OnInit {
+  @Input() selectedBooks: ICopieModel[];
+  @Output() removeToCopieEvent = new EventEmitter<string>();
+  @Output() clearCartEvent = new EventEmitter();
+
   returnDate: number = 15;
   maxReturnDate: string;
   today = new Date();
@@ -20,11 +24,19 @@ export class CartBlockComponent {
     this.maxReturnDate = maxDate.toISOString().split('T')[0];
   }
 
-  deleteItem(id: string) {
-    console.log(id);
+
+  ngOnInit(): void { }
+  
+
+  deleteCopieFromCart(copieId: string) {
+    this.removeToCopieEvent.emit(copieId);
   }
 
-  checkout(selectedBooks:Ibook[]) {
+  clearCart(){
+   this.clearCartEvent.emit();
+  }
+
+  checkout(selectedBooks:ICopieModel[]) {
     const loanRequest:IloanRequest={
       userId:'default',
       days:this.returnDate,
