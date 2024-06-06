@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ICopieModel } from '../../../core/model/ICopiesModel';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ICopieModel } from '../../../core/models/ICopiesModel';
 import { CommonModule, JsonPipe, KeyValuePipe } from '@angular/common';
 import { CopieElementComponent } from '../../elements/copie-element/copie-element.component';
 
@@ -14,6 +14,15 @@ export class CopiesListBlockComponent implements OnInit{
   
 
   @Input() copies: ICopieModel[];
+  
+  @Output() addToCartEvent = new EventEmitter<ICopieModel>();
+
+  onAddToCart(copie: ICopieModel) {
+    this.addToCartEvent.emit(copie);
+    console.log('copie added to cart:'+copie.id);
+  }
+
+
 
   ngOnInit(): void {
     console.log('lista de copias:'+this.copies);

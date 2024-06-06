@@ -1,1 +1,7 @@
-<app-cart-block [selectedBooks]="selectedBooks"></app-cart-block>
+<app-cart-block [selectedBooks]="cart$ | async"
+(removeToCopieEvent)="onRemoveFromCart($event)"
+(clearCartEvent)="onClearCart()"
+>
+
+
+</app-cart-block>

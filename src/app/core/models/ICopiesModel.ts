@@ -1,6 +1,6 @@
 
 export interface ICopieModel{
-    id:number; 
+    id:string; 
     author: string; 
     title: string;
     stock: number;

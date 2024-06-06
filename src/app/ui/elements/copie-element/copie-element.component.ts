@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ICopieModel } from '../../../core/model/ICopiesModel';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ICopieModel } from '../../../core/models/ICopiesModel';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,7 +13,14 @@ export class CopieElementComponent implements OnInit{
  
  
   @Input() copie: ICopieModel;
+  
+  @Output() addToCartEvent = new EventEmitter<ICopieModel>();
 
+  addToCart() {
+    this.addToCartEvent.emit(this.copie);    
+  }
+
+  
   ngOnInit(): void {
     console.log('CopieElementComponent');
   }

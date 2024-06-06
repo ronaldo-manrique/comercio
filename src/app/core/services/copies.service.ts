@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './generals/http.service';
 import { ApiToCopiesMapper } from '../mappers/api-to-copies-mapper';
 import { StorageService } from './generals/storage.service';
-import { ICopieModel } from '../model/ICopiesModel';
+import { ICopieModel } from '../models/ICopiesModel';
 import { Observable, map, tap } from 'rxjs';
 import { URL_RESOURCES } from '../resources/url.resources';
 

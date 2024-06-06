@@ -36,7 +36,8 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.cart__confirmation{
+
+.cart__confirmation {
   margin-top: 10px;
   height: 40px;
   background-color: #136696;
@@ -47,3 +48,20 @@ h2 {
   cursor: pointer;
 }
 
+.cart__clear {
+  margin-top: 10px;
+  height: 40px;
+  background-color: #ff6347;
+  border-radius: 18px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.button_cart {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+}
