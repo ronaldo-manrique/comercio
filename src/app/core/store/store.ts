@@ -17,4 +17,4 @@ export interface AppState {
   };
   
   
-export const appEffects = [CopiesEffects];
+export const appEffects = [CopiesEffects]; 
