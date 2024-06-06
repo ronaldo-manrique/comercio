@@ -1,0 +1,48 @@
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cart {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.cart__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cart__list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#returnDate {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cart__confirmation{
+  margin-top: 10px;
+  height: 40px;
+  background-color: #136696;
+  border-radius: 18px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+

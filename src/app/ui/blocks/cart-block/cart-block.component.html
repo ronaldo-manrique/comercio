@@ -1,0 +1,12 @@
+<section class="cart">
+  <h2 class="cart__title">Carrito de préstamo de libros</h2>
+  <ul class="cart__list">
+    @for(book of selectedBooks; track book.id) {
+    <app-cart-item [book]="book" (deleteItem)="deleteItem($event)"></app-cart-item>
+    }
+  </ul>
+
+  <label for="returnDate">Fecha de devolución:</label>
+  <input type="date" id="returnDate" name="returnDate" (change)="updateReturnDate($event)" max="{{ maxReturnDate }}">
+  <button class="cart__confirmation" (click)="checkout(selectedBooks)">Realizar préstamo</button>
+</section>
