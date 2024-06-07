@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './generals/http.service';
 import { ApiToCopiesMapper } from '../mappers/api-to-copies-mapper';
-import { StorageService } from './generals/storage.service';
 import { ICopieModel } from '../models/ICopiesModel';
 import { Observable, map, tap } from 'rxjs';
 import { URL_RESOURCES } from '../resources/url.resources';
@@ -12,12 +11,11 @@ import { URL_RESOURCES } from '../resources/url.resources';
 export class GetCopiesService {
   constructor(
     private readonly HttpService: HttpService,
-    private readonly mapper: ApiToCopiesMapper    
+    private readonly mapper: ApiToCopiesMapper
   ) {}
 
   getCopies(): Observable<ICopieModel[]> {
-   
-    const url = URL_RESOURCES.copies;    
+    const url = URL_RESOURCES.copies;
     return this.HttpService.get<ICopieModel[]>(url).pipe(
       tap((result) => {
         console.log('Resultado de la API:', result);
