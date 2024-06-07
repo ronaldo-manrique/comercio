@@ -15,7 +15,8 @@ export class HeaderContainerComponent {
   ) { }
 
   remove(){
-    this.facade.remove('token');
+    this.facade.remove();
+   
    }
 
 

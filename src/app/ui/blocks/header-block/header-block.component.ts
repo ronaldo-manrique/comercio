@@ -19,14 +19,14 @@ export class HeaderBlockComponent implements OnInit{
 
   ngOnInit(): void {
 
-   // const usernameFromToken = this.storageService.getUsernameFromToken();
-   // this.username = usernameFromToken !== null ? usernameFromToken : '';
+   
     this.username = this.storageService.get('userName');
   }
 
   @Output() logout = new EventEmitter<void>();
 
   onLogout() {
+    
     this.logout.emit();
     console.log('Logout');
   }
