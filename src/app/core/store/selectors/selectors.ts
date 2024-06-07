@@ -29,4 +29,8 @@ export const selectCheckoutRequest = createSelector(
   (state: CopiesState) => state.checkoutRequest
 );
 
+export const selectShowSpinner = createSelector(
+  selectCopiesState,
+  (state: CopiesState) => state.showSpinner
+);
 

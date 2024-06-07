@@ -11,6 +11,7 @@ import { IloanRequest } from '../../core/models/loan-request.models';
   providedIn: 'root',
 })
 export class CartContainerFacade {
+
   constructor(private store: Store<AppState>) {}
 
   cart$(): Observable<ICopieModel[]> {
@@ -24,6 +25,10 @@ export class CartContainerFacade {
     return this.store.select((state) => state.copies.checkoutResponse);
   }
 
+  showSpinner$(): Observable<boolean> {
+    return this.store.select((state) => state.copies.showSpinner);
+  }
+
 
   removeCopieFromCart(copieId: string): void {
     this.store.dispatch(CopiesActions.removeCopieFromCart({ copieId }));
@@ -35,5 +40,9 @@ export class CartContainerFacade {
 
   checkoutCart(checkoutRequest: IloanRequest): void {
     this.store.dispatch(CopiesActions.checkoutCart({ checkoutRequest }));
+  }
+
+  closeModal(modal: boolean): void {
+    this.store.dispatch(CopiesActions.checkoutCartSuccess({ response:modal }));
   }
 }

@@ -19,3 +19,7 @@ export const clearCart = createAction('[Copies] Clear Cart');
 export const checkoutCart = createAction('[Copies] Checkout Cart', props<{ checkoutRequest:IloanRequest }>());
 export const checkoutCartSuccess = createAction('[Copies] Checkout Cart Success', props<{ response: boolean }>());
 export const checkoutCartFailure = createAction('[Copies] Checkout Cart Failure', props<{ error: any }>());
+
+
+export const showSpinner = createAction('[Copies] Show Spinner');
+export const hideSpinner = createAction('[Copies] Hide Spinner');
