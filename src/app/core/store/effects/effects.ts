@@ -11,7 +11,6 @@ import { LoanCopiesService } from '../../services/loan-copies.service';
 import { AppState } from '../store';
 import { Store } from '@ngrx/store';
 
-
 @Injectable()
 export class CopiesEffects {
   constructor(
@@ -22,7 +21,6 @@ export class CopiesEffects {
     private router: Router,
     private loanService: LoanCopiesService,
     private store: Store<AppState>
-
   ) {}
 
   loadCopies$ = createEffect(() =>
@@ -40,24 +38,26 @@ export class CopiesEffects {
   loadAuths$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loadAuth),
-      mergeMap((action) =>
-        this.authService.doRefreshToken(action.refreshToken).pipe(
-          map((auths) =>{
-            this.storageService.set("token",auths.token)
-            this.storageService.set("userId",auths.userId)
-            this.storageService.set("userName",auths.userName)
-            this.router.navigate(['/commerce'])
-            return AuthActions.loadAuthSuccess({ auths })
+      mergeMap((action) => {
+        this.store.dispatch(CopiesActions.showSpinner());
+        return this.authService.doRefreshToken(action.refreshToken).pipe(
+          map((auths) => {
+            this.store.dispatch(CopiesActions.hideSpinner());
+            this.storageService.set('token', auths.token);
+            this.storageService.set('userId', auths.userId);
+            this.storageService.set('userName', auths.userName);
+            this.router.navigate(['/commerce']);
+            return AuthActions.loadAuthSuccess({ auths });
           }),
           catchError((error) => {
+            this.store.dispatch(CopiesActions.hideSpinner());
             //window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; //Cambiar a Url de login
             return of(AuthActions.loadAuthFailure({ error }));
           })
-        )
-      )
+        );
+      })
     )
   );
-
 
   checkoutCart$ = createEffect(() =>
     this.actions$.pipe(
@@ -77,6 +77,4 @@ export class CopiesEffects {
       })
     )
   );
-
-
 }

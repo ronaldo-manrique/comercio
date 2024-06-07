@@ -18,10 +18,8 @@ export class LoanCopiesService {
 
   createLoanCopies(checkoutRequest: IloanRequest): Observable<any> {
     
-    // const readerId = this.storageService.get('UserId') as string;
-
+    const readerId = this.storageService.get('userId') as string;   
     
-    const readerId = "123e4567-e89b-12d3-a456-426614174000";
 
     
     const requestBody: IRequestLoanCopies = {

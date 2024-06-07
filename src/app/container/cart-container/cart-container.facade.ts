@@ -28,6 +28,7 @@ export class CartContainerFacade {
   showSpinner$(): Observable<boolean> {
     return this.store.select((state) => state.copies.showSpinner);
   }
+  
 
 
   removeCopieFromCart(copieId: string): void {

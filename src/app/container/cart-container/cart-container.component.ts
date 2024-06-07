@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartBlockComponent } from '../../ui/blocks/cart-block/cart-block.component';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { ICopieModel } from '../../core/models/ICopiesModel';
 import { Observable } from 'rxjs';
 import { CartContainerFacade } from './cart-container.facade';
@@ -10,7 +10,7 @@ import { SpinnerElementComponent } from '../../ui/elements/spinner-element/spinn
 @Component({
   selector: 'app-cart-container',
   standalone: true,
-  imports: [CartBlockComponent, AsyncPipe,SpinnerElementComponent],
+  imports: [CartBlockComponent, AsyncPipe,SpinnerElementComponent,],
   templateUrl: './cart-container.component.html',
 })
 export class CartContainerComponent implements OnInit {

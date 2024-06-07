@@ -48,6 +48,11 @@ export class AppFacade {
 
   }
 
+
+  showSpinner$(): Observable<boolean> {
+    return this.store.select((state) => state.copies.showSpinner);
+  }
+
   getRefreshToken$():Observable<string>{
     var token= "";
      this.route.queryParamMap.subscribe((queryParams) => {
