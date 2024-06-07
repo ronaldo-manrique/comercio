@@ -24,7 +24,4 @@ export class CopiesContainerFacade {
     this.store.dispatch(CopiesActions.addCopieToCart({ copie }));
   }
 
-  
-
-  
 }

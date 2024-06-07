@@ -12,3 +12,4 @@ export const loadCopiesFailure = createAction('[Copies] Load copies Failure', pr
 export const addCopieToCart = createAction('[Copies] Add Copie to cart', props<{ copie: ICopieModel }>());
 export const removeCopieFromCart = createAction('[Copies] Remove Copie from cart', props<{ copieId: string }>());
 export const clearCart = createAction('[Copies] Clear Cart');
+
