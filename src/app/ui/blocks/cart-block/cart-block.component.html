@@ -27,15 +27,16 @@
     }
   </div>
 
-  <ul class="cart__list">
+  <ul class="cart-list">
     @for(book of selectedBooks; track book.id) {
-
     <app-cart-item
       [book]="book"
       (deleteItem)="deleteCopieFromCart($event)"
     ></app-cart-item>
     }
   </ul>
+
+
 
   <label for="returnDate">Fecha de devolución:</label>
   <input
@@ -62,28 +63,98 @@
 
 
 
-  <!-- ==================================== -->
-  <div class="modal" id="resultModal" [style.display]="(successResponse === true || errorResponse !== null) ? 'block' : 'none'">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Resultado del Préstamo</h5>
-          <button type="button" class="close-button" (click)="closeModal()">&times;</button>
+
+
+
+  <!--- ==================================== -->
+  <div
+    class="modal"
+    id="resultModal"
+    [style.display]="
+      successResponse === true || errorResponse !== null ? 'block' : 'none'
+    "
+  >
+    
+
+    <div class="card" *ngIf="successResponse === true">
+      <button type="button" class="dismiss" (click)="closeModal()">X</button>
+      <div class="header">
+        <div class="image">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              id="SVGRepo_tracerCarrier"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="1.5"
+                stroke="#000000"
+                d="M20 7L9.00004 18L3.99994 13"
+              ></path>
+            </g>
+          </svg>
         </div>
-        <div class="modal-body">
-          <p *ngIf="successResponse === true">Tu préstamo se agendó correctamente.</p>
-          <p *ngIf="errorResponse !== null">Hubo un error en tu préstamo, intenta otra vez.</p>
+        <div class="content">
+          <span class="title"> Préstamo Validado</span>
+          <p class="message">
+            REVISA TU CORREO ELECTRÓNICO<br />PARA CONOCER LOS<br />
+            DETALLES DE TU PRESTAMO
+          </p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+        <div class="actions">
+          <button type="button" class="history" (click)="closeModal()">
+            Cerrar
+          </button>
         </div>
       </div>
     </div>
+
+    <div class="card" *ngIf="errorResponse !== null">
+      <button type="button" class="dismiss" (click)="closeModal()">x</button>
+      <div class="header">
+        <div class="image-error">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              id="SVGRepo_tracerCarrier"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="1.5"
+                stroke="#000000"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </g>
+          </svg>
+        </div>
+        <div class="content">
+          <span class="title-error">Solicitud Rechazada</span>
+          <p class="message">Intenta nuevamente realizar el préstamo</p>
+        </div>
+        <div class="actions">
+          <button type="button" class="history" (click)="closeModal()">
+            cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-
-
-
-
-
-
 </section>
