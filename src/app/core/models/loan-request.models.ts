@@ -1,6 +1,5 @@
 
-export interface IloanRequest {
-  userId:string;
+export interface IloanRequest {  
   days:number;
   copies:string[]
 }

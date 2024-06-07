@@ -1,34 +1,88 @@
 <section class="cart">
   <h2 class="cart__title">Carrito de préstamo de libros</h2>
 
-  <div  class="cart-item_empty">
+  <div class="cart-item_empty">
     @if(selectedBooks.length === 0) {
-      <svg class="icon_empty" xmlns="http://www.w3.org/2000/svg"  width="100"  height="100"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12.5 17h-6.5v-14h-2" /><path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" /><path d="M16 19h6" /><path d="M19 16v6" /></svg>
-      <p class="text_empty">¡Tu carrito de prestamos está vacío!</p>      
-    }   
+    <svg
+      class="icon_empty"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100"
+      height="100"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart-plus"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path d="M12.5 17h-6.5v-14h-2" />
+      <path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" />
+      <path d="M16 19h6" />
+      <path d="M19 16v6" />
+    </svg>
+    <p class="text_empty">¡Tu carrito de prestamos está vacío!</p>
+    }
   </div>
 
-
-  <ul class="cart__list">    
+  <ul class="cart__list">
     @for(book of selectedBooks; track book.id) {
-      
-    <app-cart-item [book]="book" (deleteItem)="deleteCopieFromCart($event)"></app-cart-item>
+
+    <app-cart-item
+      [book]="book"
+      (deleteItem)="deleteCopieFromCart($event)"
+    ></app-cart-item>
     }
   </ul>
 
   <label for="returnDate">Fecha de devolución:</label>
-  <input type="date" id="returnDate" name="returnDate" (change)="updateReturnDate($event)" max="{{ maxReturnDate }}">
-  
+  <input
+    type="date"
+    id="returnDate"
+    name="returnDate"
+    (change)="updateReturnDate($event)"
+    max="{{ maxReturnDate }}"
+  />
+
   <div class="button_cart">
-
     @if (selectedBooks.length <= 0) {
-      <button class="cart__confirmation disabled" disabled>Realizar préstamo</button>      
+    <button class="cart__confirmation disabled" disabled>
+      Realizar préstamo
+    </button>
     }@else{
-      <button class="cart__confirmation" (click)="checkout(selectedBooks)">Realizar préstamo</button>
+    <button class="cart__confirmation" (click)="checkout(selectedBooks)">
+      Realizar préstamo
+    </button>
     }
-     
     <button class="cart__clear" (click)="clearCart()">Vaciar carrito</button>
-
   </div>
+
   
+
+  <!-- ==================================== -->
+  <div class="modal" id="resultModal" [style.display]="(successResponse === true || errorResponse !== null) ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Resultado del Préstamo</h5>
+          <button type="button" class="close-button" (click)="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p *ngIf="successResponse === true">Tu préstamo se agendó correctamente.</p>
+          <p *ngIf="errorResponse !== null">Hubo un error en tu préstamo, intenta otra vez.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 </section>

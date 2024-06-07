@@ -8,7 +8,7 @@ export class ApiToCopiesMapper {
   map(payload: any): ICopieModel[] {
     if (payload !== null ) {
       return payload.map((item: any) => ({
-        id: item.id,
+        id: item.libraryItemId,
         author: item.author,
         title: item.title,
         stock: item.stock,

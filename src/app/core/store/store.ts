@@ -1,3 +1,4 @@
+
 import { Action, ActionReducer } from "@ngrx/store";
 import { CopiesState, copiesReducer } from "./reducers/reducers";
 import { AuthState, authReducer } from "./reducers/auth.reducers";
@@ -19,6 +20,7 @@ export interface AppState {
     copies: copiesReducer,
     auths: authReducer
   };
+
 
 
 export const appEffects = [CopiesEffects];

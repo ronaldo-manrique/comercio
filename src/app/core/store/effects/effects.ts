@@ -7,6 +7,10 @@ import { catchError, map, mergeMap, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/generals/storage.service';
 import { Router } from '@angular/router';
+import { LoanCopiesService } from '../../services/loan-copies.service';
+import { AppState } from '../store';
+import { Store } from '@ngrx/store';
+
 
 @Injectable()
 export class CopiesEffects {
@@ -16,6 +20,9 @@ export class CopiesEffects {
     private authService: AuthService,
     private readonly storageService: StorageService,
     private router: Router,
+    private loanService: LoanCopiesService,
+    private store: Store<AppState>
+
   ) {}
 
   loadCopies$ = createEffect(() =>
@@ -50,4 +57,26 @@ export class CopiesEffects {
       )
     )
   );
+
+
+  checkoutCart$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CopiesActions.checkoutCart),
+      mergeMap((action) => {
+        this.store.dispatch(CopiesActions.showSpinner());
+        return this.loanService.createLoanCopies(action.checkoutRequest).pipe(
+          map((response) => {
+            this.store.dispatch(CopiesActions.hideSpinner());
+            return CopiesActions.checkoutCartSuccess({ response: true });
+          }),
+          catchError((error) => {
+            this.store.dispatch(CopiesActions.hideSpinner());
+            return of(CopiesActions.checkoutCartFailure({ error }));
+          })
+        );
+      })
+    )
+  );
+
+
 }

@@ -1,12 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
 import { ICopieModel } from '../../models/ICopiesModel';
 import * as CopiesActions from '../actions/actions';
+import { IloanRequest } from '../../models/loan-request.models';
+
 
 export interface CopiesState {
   copies: ICopieModel[];
   cart: ICopieModel[];
   loading: boolean;
   error: any;
+  checkoutRequest:IloanRequest;  
+  checkoutResponse: boolean;
+  showSpinner: boolean;
+  checkoutError: any;
+
 }
 
 export const initialState: CopiesState = {
@@ -14,6 +21,11 @@ export const initialState: CopiesState = {
   cart: [],
   loading: false,
   error: null,
+  checkoutRequest:null,
+  showSpinner: false,
+  checkoutResponse: false,
+  checkoutError: null,
+
 };
 
 export const copiesReducer = createReducer(
@@ -32,11 +44,6 @@ export const copiesReducer = createReducer(
     loading: false,
   })),
 
-  // ====== cart actions=====
-  // on(CopiesActions.addCopieToCart, (state, { copie }) => ({
-  //   ...state,
-  //   cart: [...state.cart, copie],
-  // })),
   on(CopiesActions.addCopieToCart, (state, { copie }) => {
     const isBookInCart = state.cart.some((item) => item.id === copie.id);
     return {
@@ -50,7 +57,25 @@ export const copiesReducer = createReducer(
     cart: state.cart.filter((item) => item.id !== copieId),
   })),
 
-  on(CopiesActions.clearCart, (state) => ({ ...state, cart: [] }))
+  on(CopiesActions.clearCart, (state) => ({ ...state, cart: [] })),
+
+ // Checkout Cart=======================
+  
+  on(CopiesActions.showSpinner, (state) => ({ ...state, showSpinner: true })),
+  on(CopiesActions.hideSpinner, (state) => ({ ...state, showSpinner: false })),
+ 
+
+  on(CopiesActions.checkoutCartSuccess, (state, { response }) => ({
+    ...state,
+    cart: [],
+    
+    checkoutResponse: response,
+    checkoutError: null,
+  })),
+  on(CopiesActions.checkoutCartFailure, (state, { error }) => ({
+    ...state,
+    checkoutError: error,
+  }))
 
 
 );
