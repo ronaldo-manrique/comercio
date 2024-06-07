@@ -12,7 +12,7 @@ export class ApiToCopiesMapper {
         author: item.author,
         title: item.title,
         stock: item.stock,
-        gender: item.gender,
+        gender: item.type,
       }));
     }
     return [];
