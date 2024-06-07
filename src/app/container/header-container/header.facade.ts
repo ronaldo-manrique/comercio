@@ -24,6 +24,6 @@ export class HeaderContainerFacade {
     this.storageService.remove('userName');
     this.storageService.remove('userId');
     this.storageService.remove('refreshToken');
-    //window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0';
+    window.location.href = 'https://sherna0303.github.io/Authentication-Pinguinera-FronEnd/#/login';
   }
 }
