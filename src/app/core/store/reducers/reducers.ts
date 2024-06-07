@@ -2,14 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 import { ICopieModel } from '../../models/ICopiesModel';
 import * as CopiesActions from '../actions/actions';
 import { IloanRequest } from '../../models/loan-request.models';
-import { state } from '@angular/animations';
+
 
 export interface CopiesState {
   copies: ICopieModel[];
   cart: ICopieModel[];
   loading: boolean;
   error: any;
-
   checkoutRequest:IloanRequest;  
   checkoutResponse: boolean;
   showSpinner: boolean;
@@ -22,11 +21,11 @@ export const initialState: CopiesState = {
   cart: [],
   loading: false,
   error: null,
-
   checkoutRequest:null,
   showSpinner: false,
   checkoutResponse: false,
   checkoutError: null,
+
 };
 
 export const copiesReducer = createReducer(
@@ -45,7 +44,6 @@ export const copiesReducer = createReducer(
     loading: false,
   })),
 
-  // Cart=======================
   on(CopiesActions.addCopieToCart, (state, { copie }) => {
     const isBookInCart = state.cart.some((item) => item.id === copie.id);
     return {
@@ -53,6 +51,7 @@ export const copiesReducer = createReducer(
       cart: isBookInCart ? state.cart : [...state.cart, copie],
     };
   }),
+
   on(CopiesActions.removeCopieFromCart, (state, { copieId }) => ({
     ...state,
     cart: state.cart.filter((item) => item.id !== copieId),
@@ -77,8 +76,6 @@ export const copiesReducer = createReducer(
     ...state,
     checkoutError: error,
   }))
-
-
 
 
 );

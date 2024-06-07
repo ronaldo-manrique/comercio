@@ -9,11 +9,9 @@ export const loadCopiesSuccess = createAction('[Copies] Load copies Success', pr
 export const loadCopiesFailure = createAction('[Copies] Load copies Failure', props<{ error: any }>());
 
 
-
 export const addCopieToCart = createAction('[Copies] Add Copie to cart', props<{ copie: ICopieModel }>());
 export const removeCopieFromCart = createAction('[Copies] Remove Copie from cart', props<{ copieId: string }>());
 export const clearCart = createAction('[Copies] Clear Cart');
-
 
 
 export const checkoutCart = createAction('[Copies] Checkout Cart', props<{ checkoutRequest:IloanRequest }>());
@@ -23,3 +21,4 @@ export const checkoutCartFailure = createAction('[Copies] Checkout Cart Failure'
 
 export const showSpinner = createAction('[Copies] Show Spinner');
 export const hideSpinner = createAction('[Copies] Hide Spinner');
+
