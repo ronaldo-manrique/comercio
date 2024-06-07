@@ -3,6 +3,8 @@
     display: inline-block;
     width: 100%;
     font-family:'Poppins';
+    border: 1px solid #136696be;
+    padding: 10px;
 
   }
 
@@ -42,6 +44,10 @@
       font-size: 1vw;
       color: gray;
     }
+    .book-author{
+      height: 2.2vw;
+    }
+
   }
 
   .book-title{
@@ -52,7 +58,7 @@
     display: flex;
     .gender{
       background-color: #136696;
-      color: black;
+      color: white;
       border-radius: 5px;
       padding: 3px;
       padding-block: 2px;
