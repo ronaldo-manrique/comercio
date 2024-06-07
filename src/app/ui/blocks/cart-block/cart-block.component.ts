@@ -4,11 +4,13 @@ import { CartItemComponent } from '../../elements/cart-item/cart-item.component'
 import { IloanRequest } from '../../../core/models/loan-request.models';
 import { ICopieModel } from '../../../core/models/ICopiesModel';
 import { CommonModule } from '@angular/common';
+import { ModalElementsComponent } from '../../elements/modal-elements/modal-elements.component';
+import { ModalSuccessElementComponent } from '../../elements/modal-success-element/modal-success-element.component';
 
 @Component({
   selector: 'app-cart-block',
   standalone: true,
-  imports: [CartItemComponent, CommonModule],
+  imports: [CartItemComponent, CommonModule,ModalElementsComponent,ModalSuccessElementComponent],
   templateUrl: './cart-block.component.html',
   styleUrl: './cart-block.component.css',
 })
@@ -42,7 +44,6 @@ export class CartBlockComponent implements OnInit {
     this.successResponse = false;
     this.errorResponse = null;
     this.closeModalEvent.emit(false);
-
   }
 
   deleteCopieFromCart(copieId: string) {
