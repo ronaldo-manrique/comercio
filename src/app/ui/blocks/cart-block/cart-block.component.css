@@ -1,14 +1,13 @@
 h2 {
   font-size: 24px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .cart {
   border: 1px solid #ccc;
   position:sticky;  
   top: 20px;
-  right: 0;
-  
+  right: 0;  
   padding: 20px;
   max-width: 400px;
   min-width: 350px;
@@ -16,8 +15,7 @@ h2 {
 }
 
 .cart__title {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 24px;  
 }
 
 
@@ -31,7 +29,7 @@ h2 {
   list-style: none;
   padding: 0;
   overflow-y: auto;
-  max-height: 500px;  
+  max-height: 50vh;  
   /* Ajusta la altura máxima según tus necesidades */
 }
 
@@ -72,7 +70,7 @@ h2 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   
 }
 
