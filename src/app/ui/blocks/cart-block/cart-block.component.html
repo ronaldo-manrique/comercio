@@ -44,6 +44,7 @@
     name="returnDate"
     (change)="updateReturnDate($event)"
     max="{{ maxReturnDate }}"
+    min="{{ minReturnDate }}"
   />
 
   <div class="button_cart">
@@ -59,7 +60,7 @@
     <button class="cart__clear" (click)="clearCart()">Vaciar carrito</button>
   </div>
 
-  
+
 
   <!-- ==================================== -->
   <div class="modal" id="resultModal" [style.display]="(successResponse === true || errorResponse !== null) ? 'block' : 'none'">

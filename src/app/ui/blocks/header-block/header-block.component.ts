@@ -9,19 +9,19 @@ import { StorageService } from '../../../core/services/generals/storage.service'
   styleUrl: './header-block.component.css'
 })
 export class HeaderBlockComponent implements OnInit{
-  
-  
- 
-   username: string = '';
-   constructor(private readonly storageService: StorageService) {} 
 
-  
+
+
+   username: string = '';
+   constructor(private readonly storageService: StorageService) {}
+
+
 
   ngOnInit(): void {
-    
-    const usernameFromToken = this.storageService.getUsernameFromToken();
-    this.username = usernameFromToken !== null ? usernameFromToken : '';
-    this.username = 'libreros';
+
+   // const usernameFromToken = this.storageService.getUsernameFromToken();
+   // this.username = usernameFromToken !== null ? usernameFromToken : '';
+    this.username = this.storageService.get('userName');
   }
 
   @Output() logout = new EventEmitter<void>();

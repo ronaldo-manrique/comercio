@@ -18,7 +18,7 @@ export class CartBlockComponent implements OnInit {
   @Input() successResponse: any;
   @Input() showSpinner: boolean;
 
-  
+
 
   @Output() removeToCopieEvent = new EventEmitter<string>();
   @Output() clearCartEvent = new EventEmitter();
@@ -27,13 +27,16 @@ export class CartBlockComponent implements OnInit {
 
   returnDate: number = 15;
   maxReturnDate: string;
+  minReturnDate: string;
   today = new Date();
   constructor() {
     const maxDate = new Date(this.today.getTime() + 14 * 24 * 60 * 60 * 1000);
     this.maxReturnDate = maxDate.toISOString().split('T')[0];
+    this.minReturnDate = this.today.toISOString().split('T')[0];
   }
 
   ngOnInit(): void {}
+
 
   closeModal() {
     this.successResponse = false;
@@ -56,7 +59,7 @@ export class CartBlockComponent implements OnInit {
       copies: selectedBooks.map((b) => b.id),
     };
 
-    
+
     console.log(loanRequest);
     this.checkoutCartEvent.emit(loanRequest);
   }

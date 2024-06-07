@@ -8,9 +8,6 @@ export const selectAuthState = (state: AppState) => state.auths
 
 
 
-export const selectCopiesState = (state: AppState) => state.copies;
-
-
 export const selectCopies = createSelector(
   selectCopiesState,
   (state: CopiesState) => state.copies
@@ -21,7 +18,7 @@ export const selectCart = createSelector(
   (state: CopiesState) => state.cart
 );
 
-                                          
+
   export const selectAuths = createSelector(
     selectAuthState,
     (state: AuthState) => state.auths
@@ -42,10 +39,10 @@ export const selectCheckoutRequest = createSelector(
   selectCopiesState,
   (state: CopiesState) => state.checkoutRequest
 );
-                                 
+
 export const selectShowSpinner = createSelector(
   selectCopiesState,
   (state: CopiesState) => state.showSpinner
 );
-                                                                                                               
+
 
