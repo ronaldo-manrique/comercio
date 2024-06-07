@@ -55,7 +55,7 @@ export class AppFacade {
       console.log('Token extraído:', token);
       if (token) {
         console.log('token extraído de la consulta:', token);
-        const refreshToken: IrefreshToken={Token:token}
+        const refreshToken: IrefreshToken={token:token}
         this.storage.set('refreshToken', token);
         this.store.dispatch(AuthActions.loadAuth({refreshToken}))
       }

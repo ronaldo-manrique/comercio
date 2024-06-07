@@ -50,7 +50,7 @@ export class CopiesEffects {
             return AuthActions.loadAuthSuccess({ auths })
           }),
           catchError((error) => {
-            window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; //Cambiar a Url de login
+            //window.location.href = 'https://www.youtube.com/watch?v=xvFZjo5PgG0'; //Cambiar a Url de login
             return of(AuthActions.loadAuthFailure({ error }));
           })
         )

@@ -1,5 +1,5 @@
 export interface IrefreshToken{
-  Token:string;
+  token:string;
 }
 
 export interface IresponseToken {
